@@ -1,13 +1,9 @@
-# All Possible unique K size combinations till N
-
-from itertools import product
-
+# Comprobar su una expresión CNF es satisfactible
 
 # Lectura del contenido del fichero dimacs de entrada
 def leer_fich_cnf(ficherocnf):
     with open(ficherocnf) as ficherocnf:
         return ficherocnf.readlines()
-
 
 # Inicialización del número de variables: Num_Vars
 num_vars = 0
@@ -48,12 +44,6 @@ def parse_fich_cnf(ficherocnf):
     # print(cnf)
     lista_clausulas = cnf
 
-
-# Generamos todas las combinaciones posibles de tamaño N
-def combinacionesLits(num_vars):
-    combs = list(product([0, 1], repeat=num_vars))
-    return combs
-
 # Generar cadena con la combinación de entrada binaria de N bits a partir de su valor decimal
 def gen_comb_entrada(val_dec,num_vars):
     combbin = [int(i) for i in list('{0:0b}'.format(val_dec).zfill(num_vars))]
@@ -61,8 +51,9 @@ def gen_comb_entrada(val_dec,num_vars):
 
 # Comprobamos la satisfabilidad de las clausulas
 def satisfastible(ficherocnf):
+
     parse_fich_cnf(ficherocnf)
-    comb_entrada = combinacionesLits(num_vars)
+
     print(f'-Num Variables: {num_vars}')
     print(f'-Num Clausulas: {num_clas}')
     print(f'-Lista de clausulas ordenadas: {lista_clausulas}')
@@ -118,8 +109,5 @@ def satisfastible(ficherocnf):
 # print(f'-Num Variables: {num_vars}')
 # print(f'-Num Clausulas: {num_clas}')
 # print(f'-Lista de clausulas: {lista_clausulas}')
-#
-# # Generación de las combinaciones de entrada
-# comb_entrada = combinacionesLits(num_vars)
-# print(f'Combinaciones de entrada:{comb_entrada}')
+
 satisfastible('clausulas.cnf')
